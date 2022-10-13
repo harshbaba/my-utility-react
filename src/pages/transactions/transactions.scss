@@ -1,0 +1,36 @@
+.add-transaction{
+    line-height: 30px;
+    font-size: 14px;
+    margin:0 7px;
+    float:right;
+}
+
+.transaction-item.summary{
+    padding:10px 0px;
+    background: #754ca2;
+    color: #fff;
+    ul, li{
+        float: left;
+        width: 100%;
+
+        > div{
+            width:50%;
+            float: left;
+        }
+        > div+div{
+            text-align: right;
+        }
+        li{
+            border-bottom:1px solid #cbcacc;
+            padding: 6px 15px;
+        }
+        li:last-child{
+            border-bottom: 0;
+        }
+        h3{
+            font-weight: normal;
+            font-size: 15px;
+        }
+    }
+    
+}

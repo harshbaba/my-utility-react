@@ -1,0 +1,71 @@
+body{
+    background-color: #eee6f6;
+}
+.container{
+    max-width:95%;
+    margin:0 auto;
+    width: 100%;
+}
+
+.page-heading{
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 15px;
+    float: left;
+}
+.card-link{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.page-inner{
+    background-color: #ffffff;
+    border-radius: 10px 10px 0 0;
+    min-height: 500px;
+    float: left;
+    width: 100%;
+}
+
+/*Form CSS*/
+.myform{
+    text-align: center;
+}
+.field-box-inner{
+    display: inline-block;
+    width: 90%;
+    max-width:300px;
+    margin-top:20px;
+    >label{
+        display: block;
+        margin-bottom: 6px;
+        text-align: left;
+    }
+    >input{
+        width: 100%;
+        box-sizing: border-box;
+        padding:5px 10px;
+        display: block;
+        font-size:14px;
+        line-height: 28px;
+        border: 1px solid #cbcacc;
+    }
+    >select{
+        width: 100%;
+        box-sizing: border-box;
+        padding:5px 10px;
+        display: block;
+        font-size:14px;
+        height: 35px;
+        border: 1px solid #cbcacc;
+        background:#fff;
+    }
+
+    >button{
+        width:90px;
+        line-height: 30px;
+        font-size: 14px;
+        margin:0 7px;
+    }
+}

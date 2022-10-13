@@ -1,0 +1,32 @@
+.layout-header{
+    float: left;
+    width: 100%;
+    background:#5f259e;
+    min-height: 50px;
+}
+
+.header-main{
+    float: left;
+    width: 100%;
+
+    .user-welcome{
+        float: left;
+        line-height: 20px;
+        font-size: 15px;
+        color: #fff;
+        padding-top: 5px;
+    }
+
+    .user-logout{
+        float: right;
+        padding-top: 10px;
+        button{
+            background: #6b6b6b;
+            border: 0;
+            color: #fff;
+            font-size: 16px;
+            line-height: 30px;
+            padding: 0 10px;
+        }
+    }
+}

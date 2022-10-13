@@ -1,0 +1,33 @@
+.layout-menu{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    border-top: 1px solid #b8b8b8;
+}
+
+.menu-main{
+    float: left;
+    width: 100%;
+
+    ul{
+        float: left;
+        width: 100%;
+
+        li{
+            float: left;
+            width:33%;
+            a{
+                display: block;
+                text-align: center;
+                line-height: 55px;
+                font-size: 16px;
+                color: #6b6b6b;
+            }
+            a.active{
+                color: #5f259e;
+            }
+        }
+    }
+}

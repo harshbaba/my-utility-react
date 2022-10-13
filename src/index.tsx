@@ -3,13 +3,25 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { TRACKERS_DATA } from './mock/trackers';
+import { useState, createContext } from "react";
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+export const INITIAL_STATE = {
+  trackers:{
+    isLoading:true,
+    isError:false,
+    errorMsg:"",
+    response:[]
+  }
+}
+
+export const AppContext = createContext<any>(INITIAL_STATE);
 root.render(
   <React.StrictMode>
-    <App />
+      <App />
   </React.StrictMode>
 );
 
