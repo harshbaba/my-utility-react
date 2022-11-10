@@ -12,13 +12,14 @@ const root = ReactDOM.createRoot(
 export const INITIAL_STATE = {
   trackers:{
     isLoading:true,
+    isLoadingDone: false,
     isError:false,
     errorMsg:"",
     response:[]
   }
 }
 
-export const AppContext = createContext<any>(INITIAL_STATE);
+export const AppContext = createContext<any>(null);
 root.render(
   <React.StrictMode>
       <App />

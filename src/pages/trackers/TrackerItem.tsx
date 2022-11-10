@@ -7,7 +7,11 @@ const TrackerItem: FC<{trackerItem:any}> = ({ trackerItem }) => {
     return (
         <div className="tracker-item">
             <div className="tracker-item-inner">
-                <h3>{trackerItem.trackerName}</h3>
+                <h3 className="tracker-item-heading">
+                    <Link to={'/add-edit-tracker?trackerid='+trackerItem._id} className="tracker-link" >
+                        {trackerItem.trackerName}
+                    </Link>
+                </h3>
                 {trackerItem.transactions.length > 0 && 
                     <p>{trackerItem.transactions[trackerItem.transactions.length - 1].remarks}</p>
                 }

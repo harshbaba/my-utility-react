@@ -8,6 +8,8 @@ import './scss/main.scss';
 import TransactionsPage from '../pages/transactions/Transactions';
 import AddEditTransaction from '../pages/transactions/AddEditTransaction';
 import LoginPage from '../pages/login/Login';
+import RegisterPage from '../pages/register/Register';
+import AddEditTracker from '../pages/trackers/AddEditTracker';
 
 const Main = () => {
     return (
@@ -21,7 +23,9 @@ const Main = () => {
               <Route path="/myAccount" element={<MyAccountPage pageName="My Account" />} />
               <Route path="/tracker/:id" element={<TransactionsPage />} />
               <Route path="/add-edit-transaction/trackerid/:trackerid" element={<AddEditTransaction />} />
-              <Route path="/login/" element={<LoginPage />} />
+              <Route path="/add-edit-tracker" element={<AddEditTracker />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
             </Routes>
           </div>
         </div>

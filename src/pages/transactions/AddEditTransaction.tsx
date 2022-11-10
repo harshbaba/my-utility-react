@@ -69,9 +69,11 @@ const AddEditTransaction: FC<{}> = () => {
 
     useEffect(()=>{
         if(transactionId){
-            setPayload({ paidBy:transactionData?.paidBy, amount:transactionData?.amount, remarks:transactionData?.remarks, trackerId:trackerid})
-        }else{
-            
+            setPayload({ paidBy:transactionData?.paidBy, 
+                amount:transactionData?.amount, 
+                remarks:transactionData?.remarks, 
+                trackerId:trackerid
+            })
         }
     },[trackerid])
     return (

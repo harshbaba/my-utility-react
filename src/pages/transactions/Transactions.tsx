@@ -28,7 +28,7 @@ const TransactionsPage: FC<{}> = ({ }) => {
                         />
                     </div>
                 })}
-                {trackerData?.transactions?.length &&
+                {trackerData?.transactions?.length > 0 &&
                     <div className="transaction-item summary">
                         <ul>
                             {transactionsSummary?.membersLength > 1 && 

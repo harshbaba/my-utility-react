@@ -1,0 +1,21 @@
+.add-tracker{
+    line-height: 30px;
+    font-size: 14px;
+    margin:0 7px;
+    float:right;
+}
+.tracker-item-heading{
+    position: relative;
+    z-index: 999;
+    display: inline-block;
+}
+.field-box-inner.members{
+    text-align: left;
+}
+.field-box-inner.members > ul{
+    margin-top: 10px;
+}
+.field-box-inner.members > ul > li{
+    padding:10px 0;
+    border-top: 1px solid #cbcacc;
+}

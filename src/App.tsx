@@ -1,7 +1,7 @@
 import React, {useEffect, useState}from 'react';
 import logo from './logo.svg';
 import './App.scss';
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, useParams } from "react-router-dom";
 import axios from 'axios';
 
 import Menu from './components/Menu';
@@ -10,6 +10,7 @@ import Header from './components/Header';
 import {AppContext, INITIAL_STATE} from './index';
 import { GET_TRACKERS_BY_USER_ID } from './endpoints';
 import LoginPage from './pages/login/Login';
+import RegisterPage from './pages/register/Register';
 
 function App() {
   const [trackersData, setTrackersData] = useState({...INITIAL_STATE});
@@ -35,12 +36,12 @@ function App() {
         if(res.data?.success){
           setTrackersData(
             {...trackersData, trackers:
-              {errorMsg:"", isLoading:false, isError: false, response:res.data.trackers}
+              {errorMsg:"", isLoading:false, isLoadingDone: true, isError: false, response:res.data.trackers}
             })
         }else{
           setTrackersData(
             {...trackersData, trackers:
-              {errorMsg:res.data.message, isLoading:false, isError: true, response:[]}
+              {errorMsg:res.data.message, isLoading:false,isLoadingDone: true, isError: true, response:[]}
             })
         }
       }).catch(err => {
@@ -49,23 +50,21 @@ function App() {
   },[isLoggedIn])
 
   console.log('appcontext', value);
-  
   return (
     <Router>
       <AppContext.Provider value={value}>
         <div className="page-wrapper">
-        {isLoggedIn &&
+        
           <>
+          {isLoggedIn &&
             <Header />
+          }
             <Main />
+          {isLoggedIn &&
             <Menu />
+          }
             </>
-        }
-        {!isLoggedIn &&
-          <LoginPage />
-        }
-          
-          
+      
         </div>
       </AppContext.Provider>
       

@@ -1,14 +1,12 @@
 import React, { FC, useState, useContext } from 'react';
-import axios from 'axios';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { AppContext } from '../../index';
-import { USER_LOGIN } from '../../endpoints';
-const LoginPage: FC<{}> = ({  }) => {
+import { USER_REGISTER } from '../../endpoints';
+const RegisterPage: FC<{}> = ({  }) => {
     const navigate = useNavigate();
-    const [payload, setPayload] = useState({email:"", password:""});
-    const {setIsLoggedIn} = useContext(AppContext);
-    const {setUserInfo} = useContext(AppContext);
+    const [payload, setPayload] = useState({fullName: "", email:"", password:"", rePassword:""});
     const onChange = (value:any, fieldName:string) => {
         const data:any = {...payload}
         data[fieldName] = value;
@@ -16,28 +14,37 @@ const LoginPage: FC<{}> = ({  }) => {
     }
 
     const onReset = ()=>{
-        setPayload({email:"", password:""});
+        setPayload({fullName:"", email:"", password:"", rePassword:""});
     }
-
+    
     const onSubmit = () =>{
-        if((payload.email == "") || payload.password == ""){
-            alert('User Email & Password is manadatory')
-        }else{
-            axios.post(`${USER_LOGIN}`,payload)
+        if(payload.fullName == ""
+            || payload.email == "" 
+            || payload.password == "" 
+            || payload.rePassword == ""){
+            alert('All field is Manadatory')
+            return;
+        }
+
+        if(payload.password !== payload.rePassword){
+            alert('Password and re password did not match')
+            return;
+        }
+
+        axios.post(`${USER_REGISTER}`,payload)
             .then(res => {
                 console.log(res.data);
                 if(res.data.success){
-                    localStorage.setItem('userInfo', JSON.stringify(res.data));
-                    setIsLoggedIn(true);
-                    setUserInfo(res.data);
-                    navigate('/');
+                    alert("Hello "+ payload.fullName + ' '+res.data.message);
+                    navigate('/login');
                 }else{
                     alert(res.data.message);
                 }
             }).catch(err => {
                 alert(err);
-            })
-        }
+        })
+
+
     }
 
     return (
@@ -45,9 +52,23 @@ const LoginPage: FC<{}> = ({  }) => {
         <div className="layout-main">
             <div className="container">
                 <div className="main">
-                <h3 className="page-heading">Login</h3>
+                <h3 className="page-heading">Register</h3>
                 <div className="page-inner login-inner">
                 <form id="form" className="myform">
+
+                    <div className="field-box">
+                    <div className="field-box-inner">
+                        <label>Full Name</label>
+                        <input
+                            name='FullName'
+                            id='fullName'
+                            type='text'
+                            placeholder='Full Name'
+                            onChange={(e) => onChange(e.target.value, 'fullName')}
+                            value={payload.fullName}
+                        />
+                    </div>
+                    </div>
                     
                     <div className="field-box">
                     <div className="field-box-inner">
@@ -76,15 +97,28 @@ const LoginPage: FC<{}> = ({  }) => {
                     </div>
                     </div>
                     <div className="field-box">
+                        <div className="field-box-inner">
+                            <label>Re Enter Password</label>
+                            <input
+                                name='Re Password'
+                                id='rePassword'
+                                type='password'
+                                placeholder=' Re Password'
+                                onChange={(e) => onChange(e.target.value, 'rePassword') }
+                                value={payload.rePassword}
+                                />
+                        </div>
+                    </div>
+                    <div className="field-box">
                     <div className="field-box-inner control-box">
                         <button type='reset' onClick={onReset}>Reset</button>
-                        <button type='button' onClick={onSubmit}>Login</button>
+                        <button type='button' onClick={onSubmit}>Register</button>
                     </div>
                     </div>
                     <div className="field-box">
                     <div className="field-box-inner">
-                        <p>Don't have an account? Register with us.</p>
-                        <Link to={'/register'}>Register</Link>
+                        <p>Already having Account? Go for Login.</p>
+                        <Link to={'/login'}>Login</Link>
                     </div>
                     </div>
                     </form>
@@ -97,4 +131,4 @@ const LoginPage: FC<{}> = ({  }) => {
     );
 };
 
-export default LoginPage;
+export default RegisterPage;
