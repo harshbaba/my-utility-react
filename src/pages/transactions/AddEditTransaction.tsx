@@ -23,7 +23,11 @@ const AddEditTransaction: FC<{}> = () => {
         if((payload.amount == 0) || payload.paidBy == "" || payload.trackerId == ""){
             alert('amount, paidBy, trackerId is manadatory')
         }else{
-            axios.post(`${ADD_TRANSACTION}`,payload)
+            axios.post(`${ADD_TRANSACTION}`,{...payload, 
+                transactionId: transactionId,
+                createdAt: new Date(),
+                updatedAt:''
+            })
             .then(res => {
                 alert('Transaction Add Successfully');
                 const addedData = {...trackersData};
@@ -41,7 +45,11 @@ const AddEditTransaction: FC<{}> = () => {
         if((payload.amount == 0) || payload.paidBy == "" || payload.trackerId == ""){
             alert('amount, paidBy, trackerId is manadatory')
         }else{
-            axios.post(`${UPDATE_TRANSACTION}`,{...payload, transactionId: transactionId})
+            axios.post(`${UPDATE_TRANSACTION}`,
+                {...payload, 
+                transactionId: transactionId,
+                updatedAt: new Date()
+            })
             .then(res => {
                 alert('Transaction Update Successfully');
                 const addedData = {...trackersData};
